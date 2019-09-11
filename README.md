@@ -9,6 +9,7 @@
 python data_preprocessing.py
 python data_loader.py
 python pre_embedding.py
+python main.py
 python predict.py
 ```
 

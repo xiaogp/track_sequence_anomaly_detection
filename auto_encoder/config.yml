@@ -1,0 +1,16 @@
+data:
+  file_path: ./todData/sample_data.csv
+  pickle_path: ./todData/alarm.pkl
+
+model:
+  batch_size: 512
+  epochs: 200
+  learning_rate: 0.0001
+  n_hidden_1: 512
+  n_hidden_2: 256
+  n_input: 2016
+  checkpoint_path: ./tod_autoencoder
+  display_step: 10
+  evaluate_step: 200
+  save_step: 200
+  pb_path: ./tod_pb
