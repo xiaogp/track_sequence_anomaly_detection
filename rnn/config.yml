@@ -1,0 +1,29 @@
+data:
+  file_path: ./todData/sample_data.csv
+  output_path: ./todData/trackSeq.txt
+  pickle_path: ./todData/trackSeq.pkl
+  tokenizer_path: ./todData/tokenizer.pkl
+  train_path: ./todData/train.pkl
+  test_path: ./todData/test.pkl
+model:
+  seq_length: 4
+  batch_size: 128
+  epochs: 5
+  use_bilstm: false
+  num_layers: 2
+  embedding_size: 128
+  vocab_size: 2016
+  use_word2vec: true
+  fix_embedding: true
+  learning_rate: 0.0001
+  summary_path: ./tod_lstm/summary
+  cktp_path: ./tod_lstm/model.cktp
+  pb_path: ./tod_lstm/tfserving
+  rnn_size: 256
+  label_size: 2016
+  min_count: 3
+  sg: 1
+  window: 3
+  embedding_model: ./todData/embedding.model
+  embedding_path: ./todData/embedding.txt
+  kl_threshold: 10.5
