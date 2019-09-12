@@ -87,4 +87,4 @@ python stdbscan.py
 
 &emsp;轨迹检测
 
-![](/st-dbscan/outlier.jpg)
+![](/st-dbscan/outlier.png)
