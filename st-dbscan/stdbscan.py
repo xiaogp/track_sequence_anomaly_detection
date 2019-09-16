@@ -40,7 +40,7 @@ class st_dbscan(object):
         target_geo = points[point_index]["poi"][2]
         # 先判断时间
         max_tim = target_tim + self.tim if (target_tim + self.tim) < 24 else (target_tim + self.tim) - 24
-        min_tim = target_tim - self.tim if (target_tim - self.tim) >= 0 else (target_tim + self.tim) + 24
+        min_tim = target_tim - self.tim if (target_tim - self.tim) >= 0 else (target_tim - self.tim) + 24
 
         for index in points:
             if index == point_index:
