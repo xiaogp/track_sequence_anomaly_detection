@@ -47,7 +47,7 @@ class st_dbscan(object):
                 continue
             if max_tim > min_tim:
                 if all([points[index]["poi"][1] <= max_tim,
-                        points[index]["poi"][1] >= max_tim]):
+                        points[index]["poi"][1] >= min_tim]):
                     distance = self.calculate_geo_distance(points[index]["poi"][2], target_geo)
                     if distance <= self.geo:
                         neighbors_list.append(index)
