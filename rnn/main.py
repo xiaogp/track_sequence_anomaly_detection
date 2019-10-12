@@ -75,7 +75,8 @@ def train():
 
     with sess.as_default():
         global_step = tf.Variable(0, name="global_step", trainable=False)
-        optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate).minimize(lstm.loss, global_step=global_step)
+        decaylearning_rate = tf.train.exponential_decay(learning_rate, global_step, 100, 0.99)
+        optimizer = tf.train.AdamOptimizer(learning_rate=decaylearning_rate).minimize(lstm.loss, global_step=global_step)
         saver = tf.train.Saver(tf.global_variables(), max_to_keep=1)
 
         sess.run(tf.global_variables_initializer())
