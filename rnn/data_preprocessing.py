@@ -36,7 +36,7 @@ def data_preprocessing():
         for card, dayDict in sortedTrackDict.items():
             for day, hourList in dayDict.items():
                 for hour, loc in hourList:
-                    f.write(str(round(hour)) + "_" + str(loc) + " ")
+                    f.write(str(int(hour)) + "_" + str(loc) + " ")
                 f.write("\n")
 
 
