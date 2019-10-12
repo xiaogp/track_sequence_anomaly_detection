@@ -56,15 +56,14 @@ def main():
                     keep_prob: 1})
                 # 多分类交叉熵
                 loss = sess.run(tf.nn.sparse_softmax_cross_entropy_with_logits(
-                    logits=logits, labels=[label]))
-                loss = round(loss[0], 3)
+                    logits=logits, labels=[label]))[0]
                 # kl离散度
                 onehot = [1e-6] * label_size
                 onehot[label] = 1
-                kl = round(stats.entropy(logits[0], onehot), 3)
+                kl = stats.entropy(logits[0], onehot)
                 # 用kl离散度判断异常
                 abnormal = "[{}]".format(" " if kl <= kl_threshold else "×")
-                print("{} 交叉熵：{}, kl离散度：{}, 移动轨迹：{} => {}".format(
+                print("{} 交叉熵：{:.4f}, kl离散度：{:.4f}, 移动轨迹：{} => {}".format(
                     abnormal, loss, kl, track[(i - 4) if (i - 4) >= 0 else 0:i], track[i]))
             print("")
 
