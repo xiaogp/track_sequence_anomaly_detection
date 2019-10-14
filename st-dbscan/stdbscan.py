@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 import time
+import math
 
-from geopy.distance import great_circle
-
+EARTH_RADIUS = 6371.009
 
 def data_preprocessing():
     points = {}
@@ -30,8 +30,18 @@ class st_dbscan(object):
         self.geo = geo  # 地理距范围
         self.min_samples = min_samples  # 点数据量阈值
 
+#     def calculate_geo_distance(self, lat_lng1, lat_lng2):
+#         distance = great_circle(lat_lng1, lat_lng2).meters
+#         return distance
+
     def calculate_geo_distance(self, lat_lng1, lat_lng2):
-        distance = great_circle(lat_lng1, lat_lng2).meters
+        """一种近似求解地理距离的方法"""
+        dx = lat_lng1[1] - lat_lng2[1]
+        dy = lat_lng1[0] - lat_lng2[0]
+        b = (lat_lng1[0] + lat_lng2[0]) / 2
+        Lx = math.radians(dx) * EARTH_RADIUS * math.cos(math.radians(b))
+        Ly = EARTH_RADIUS * math.radians(dy)
+        distance = math.sqrt(Lx * Lx + Ly * Ly)
         return distance
 
     def neighbors(self, points, point_index):
