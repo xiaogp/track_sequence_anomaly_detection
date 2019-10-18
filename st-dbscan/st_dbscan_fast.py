@@ -76,7 +76,8 @@ class STDBSCAN(object):
         target_geo = points[point_index]["poi"][2]
         max_tim = target_tim + self.tim
         geo_distance = self.geo
-
+        
+        # 使用np.polyfit拟合地理距离和欧式距离的二次函数表达式 
         predict_distances = POLY_COEF[0] * geo_distance * geo_distance + POLY_COEF[1] * geo_distance + POLY_COEF[2]
         geo_neighbors_list = self.geo_search_model.range_search(np.array([target_geo]), predict_distances)
 
